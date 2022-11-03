@@ -1,0 +1,10 @@
+Server started his work. | 2022-11-03 20:28:16.760662
+Client connected. | 2022-11-03 20:28:22.283422
+Server started his work. | 2022-11-03 20:31:10.871946
+Client connected. | 2022-11-03 20:31:14.415830
+New client registration. | 2022-11-03 20:31:14.423830
+Server started his work. | 2022-11-03 20:33:12.172097
+Client connected. | 2022-11-03 20:33:16.171458
+New client registration. | 2022-11-03 20:33:16.180478
+New client ended his registration successfully. | 2022-11-03 20:33:17.755821
+Client was disconnected by his according to his desire. | 2022-11-03 20:34:34.566865
