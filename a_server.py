@@ -7,7 +7,7 @@ import datetime
 async def logger(message: str) -> None:
     """Сохранение лог файла сервера"""
     with open('log.txt', 'a+') as f:  # лог файл
-        f.write(message + ' | ' + str(datetime.datetime.now()) + '\n')
+        f.write("{} | {}\n".format(str(datetime.datetime.now()), message))
     print(message)
 
 
@@ -26,14 +26,17 @@ async def enter_server(reader: asyncio.StreamReader, writer: asyncio.StreamWrite
     try:
         with open("clients.json", 'r') as clients_list:
             file_reader = json.load(clients_list)
-            if len(file_reader) != 0:
-                for elem in file_reader:
-                    if elem['name'] == name.decode():
-                        user_password, user_name, known = elem['password'], elem['name'], not known
-                        await send(writer, f"Hello, {name.decode()}! Validate your password, please.")
-                        break
+            for elem in file_reader['clients']:
+                if elem['name'] == name.decode():
+                   user_password, user_name, known = elem['password'], elem['name'], not known
+                   await send(writer, f"Hello, {name.decode()}! Validate your password, please.")
+                   break
     except json.JSONDecodeError:
         pass
+    except FileNotFoundError:
+        with open("clients.json", 'w') as clients_list:
+            client_data = {'clients': []}
+            json.dump(client_data, clients_list, indent=4)
     if known:  # подключение известного клиента
         await logger("Client is known.")
         attempts = 3  # три попытки на подтверждение пароля
@@ -60,9 +63,12 @@ async def enter_server(reader: asyncio.StreamReader, writer: asyncio.StreamWrite
         password_confirm = await reader.read(1024)
         if password == password_confirm:
             password = hashlib.md5(password).hexdigest()
-            with open("clients.json", 'a+') as clients_list:
-                client_data = {'password': password, 'name': name.decode()}
-                json.dump(client_data, clients_list, indent=4)
+            clients_list = open("clients.json", 'r')
+            file_reader = json.load(clients_list)
+            clients_list.close()
+            file_reader['clients'].append({'password': password, 'name': name.decode()})
+            with open("clients.json", 'w') as clients_list:
+                json.dump(file_reader, clients_list, indent=4)
                 await logger("New client ended his registration successfully.")
                 await send(writer, "Registration ended.")
         else:
@@ -96,9 +102,12 @@ async def client_handler(reader: asyncio.StreamReader, writer: asyncio.StreamWri
 async def run_server():
     """Основная функция запуска сервера"""
     server = await asyncio.start_server(client_handler, 'localhost', 1025)
-    await logger(f"Server started his work at {server.sockets[0].getsockname()}")
+    await logger(f"Server started his work at {server.sockets[0].getsockname()[1]}")
     async with server:
         await server.serve_forever()
 
-
-asyncio.run(run_server())
+try:
+    asyncio.run(run_server())
+except KeyboardInterrupt:
+    with open('log.txt', 'a+') as f:
+        f.write("{} | {}\n".format(str(datetime.datetime.now()), "Server closed."))

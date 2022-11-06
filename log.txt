@@ -1,10 +1,25 @@
-Server started his work. | 2022-11-03 20:28:16.760662
-Client connected. | 2022-11-03 20:28:22.283422
-Server started his work. | 2022-11-03 20:31:10.871946
-Client connected. | 2022-11-03 20:31:14.415830
-New client registration. | 2022-11-03 20:31:14.423830
-Server started his work. | 2022-11-03 20:33:12.172097
-Client connected. | 2022-11-03 20:33:16.171458
-New client registration. | 2022-11-03 20:33:16.180478
-New client ended his registration successfully. | 2022-11-03 20:33:17.755821
-Client was disconnected by his according to his desire. | 2022-11-03 20:34:34.566865
+2022-11-06 20:26:49.460830 | Server started his work at 1025
+2022-11-06 20:26:55.274221 | Client connected.
+2022-11-06 20:26:55.289820 | New client registration.
+2022-11-06 20:26:58.445091 | New client ended his registration successfully.
+2022-11-06 20:27:05.213665 | message: exit
+2022-11-06 20:27:05.229307 | Client was disconnected by his according to his desire.
+2022-11-06 20:27:21.749974 | Client connected.
+2022-11-06 20:27:21.749974 | Client is known.
+2022-11-06 20:27:22.999699 | Client confirmed his password.
+2022-11-06 20:27:25.514513 | message: hi
+2022-11-06 20:27:27.417276 | message: bye
+2022-11-06 20:27:28.698099 | message: exit
+2022-11-06 20:27:28.713709 | Client was disconnected by his according to his desire.
+2022-11-06 20:27:39.877388 | Client connected.
+2022-11-06 20:27:39.908611 | New client registration.
+2022-11-06 20:27:45.281277 | New client ended his registration successfully.
+2022-11-06 20:27:47.140090 | message: exit
+2022-11-06 20:27:47.155696 | Client was disconnected by his according to his desire.
+2022-11-06 20:28:20.667746 | Server started his work at 1025
+2022-11-06 20:28:24.164043 | Client connected.
+2022-11-06 20:28:24.179681 | Client is known.
+2022-11-06 20:28:31.771007 | Client confirmed his password.
+2022-11-06 20:28:35.675986 | message: exit
+2022-11-06 20:28:35.691602 | Client was disconnected by his according to his desire.
+2022-11-06 20:28:42.689522 | Server closed.
