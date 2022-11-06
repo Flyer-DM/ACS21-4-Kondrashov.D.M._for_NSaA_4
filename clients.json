@@ -1,4 +1,12 @@
 {
-    "password": "c4ca4238a0b923820dcc509a6f75849b",
-    "name": "D"
+    "clients": [
+        {
+            "password": "c4ca4238a0b923820dcc509a6f75849b",
+            "name": "Dmitry"
+        },
+        {
+            "password": "81dc9bdb52d04dc20036dbd8313ed055",
+            "name": "Mike"
+        }
+    ]
 }
