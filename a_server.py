@@ -24,7 +24,7 @@ async def enter_server(reader: asyncio.StreamReader, writer: asyncio.StreamWrite
     name = await reader.read(1024)
     await logger("Client connected.")
     try:
-        with open("clients.json", 'r') as clients_list:
+        with open("clients.json", 'a+') as clients_list:
             file_reader = json.load(clients_list)
             if len(file_reader) != 0:
                 for elem in file_reader:
